@@ -1,14 +1,11 @@
 import { useEffect, useState } from "react";
 import Job from "../components/Job";
 import Modal from "../components/Modal";
-import Text from "../components/Text";
 import { Job as Jobm } from "../libs/models/Job";
 import { Button } from "react-bootstrap";
 import { detasker } from "./_app";
 import { useAccount } from "wagmi";
 import { Detasker } from "../typechain-types";
-import { ethers } from "ethers";
-import { log } from "console";
 
 export default function Jobs() {
   const { address, isDisconnected } = useAccount();
@@ -23,8 +20,10 @@ export default function Jobs() {
     if (!isDisconnected && detasker) {
       (async () => {
         setUserCount((await detasker!.getUserCount()).toNumber());
+        //@ts-ignore
         const c = (await detasker!.getJobCount()).toNumber();
         for (let index = 0; index < c; index++) {
+          //@ts-ignore
           jobs.push(await detasker["getJobById(uint256)"](index));
         }
         setJobCount(c);
@@ -63,7 +62,7 @@ export default function Jobs() {
       <Button onClick={() => SetShowAddJobs(true)}>Add a job</Button>
       <h2>Jos</h2>
       {jobs.map((j) => (
-        <p>{j.title == "" ? "no title" : j.title}</p>
+        <p key={j.title}>{j.title == "" ? "no title" : j.title}</p>
       ))}
     </div>
   );

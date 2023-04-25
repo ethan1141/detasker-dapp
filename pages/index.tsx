@@ -27,10 +27,14 @@ const Home: NextPage = () => {
   useEffect(() => {
     if (detasker) {
       (async () => {
-        setJobs((await detasker.getJobCount()).toNumber() as Number);
+        //@ts-ignore
+        setJobs((await detasker.getJobCount()).toNumber() as unknown as Number);
+        //@ts-ignore
         setFreelancers(
-          (await detasker.getFreelaneCount()).toNumber() as Number
+          //@ts-ignore
+          (await detasker.getFreelaneCount()).toNumber() as unknown as Number
         );
+        //@ts-ignore
         setUserCount((await detasker.getUserCount()).toNumber() as Number);
         setProfile(
           (await detasker.users(address as "0x")) as unknown as Profile
@@ -38,7 +42,7 @@ const Home: NextPage = () => {
       })();
     }
     console.log(profile);
-  }, [isDisconnected]);
+  }, [isDisconnected, detasker, address]);
 
   return (
     <main>
@@ -59,9 +63,11 @@ const Home: NextPage = () => {
           <h2>Freelancers: {freelancers != -1 ? freelancers : "Loading..."}</h2>
         </Col>
       </Row>
-      <p>
+      <div>
         {isDisconnected ? (
-          "You are disconnected"
+          <div>
+            <p>You are disconnected</p>
+          </div>
         ) : profile.id.toNumber() === 0 ? (
           <div>
             <Modal
@@ -98,10 +104,12 @@ const Home: NextPage = () => {
           </div>
         ) : (
           <div>
-            <h5>Welcome back, {profile.name}</h5>
+            <h5>
+              Welcome back, {profile.name !== "" ? profile.name : "(no name)"}
+            </h5>
           </div>
         )}
-      </p>
+      </div>
     </main>
   );
 };

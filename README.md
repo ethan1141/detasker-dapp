@@ -11,7 +11,7 @@ https://docs.ethers.org/v6/getting-started/
 
 # Live Demo
 
-[Domo](https://dapp-template-rainbow-kit.ethanrussell.dev/) or https://dapp-template-rainbow-kit.ethanrussell.dev/
+[Domo](https://detasker.xyz/) or https://detasker.xyz/
 
 ## Getting Started
 

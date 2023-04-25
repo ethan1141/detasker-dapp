@@ -1,6 +1,5 @@
 import { log } from "console";
 import { PromiseOrValue } from "../typechain-types/common";
-
 export function getString(a: PromiseOrValue<string>) {
   console.log("N");
   console.log(a);
@@ -70,3 +69,19 @@ export function setProperty(
 
   return o;
 }
+// async function getGreenFieldBucketInfo(bucketName: string) {
+//   const rpcClient = await makeRpcClient(
+//     "https://gnfd-testnet-sp-1.bnbchain.org"
+//   );
+
+//   const rpc = new storageQueryClientImpl(rpcClient);
+//   const bucketInfoRes = await rpc.HeadBucket({
+//     bucketName,
+//   });
+
+//   const bucketId = bucketInfoRes?.bucketInfo?.id;
+//   if (!bucketId) throw new Error("no such bucket");
+
+//   return await rpc.HeadBucketById({
+//     bucketId,
+//   });
