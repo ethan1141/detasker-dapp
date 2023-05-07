@@ -1,11 +1,15 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Job from "../components/Job";
 import Modal from "../components/Modal";
 import { Job as Jobm } from "../libs/models/Job";
-import { Button } from "react-bootstrap";
-import { detasker } from "./_app";
-import { useAccount } from "wagmi";
+import { Accordion, Button, Card, Col, Row } from "react-bootstrap";
+import { detasker, signer } from "./_app";
+import { erc20ABI, useAccount } from "wagmi";
 import { Detasker } from "../typechain-types";
+import { GASS_FEE, erc20Abi, zeroAddress } from "../libs/Helper";
+import Web3 from "web3";
+import { ethers } from "ethers";
+import { isAddress } from "ethers/lib/utils.js";
 
 export default function Jobs() {
   const { address, isDisconnected } = useAccount();
@@ -37,7 +41,7 @@ export default function Jobs() {
       <Modal
         config={{
           title: "Add a job",
-          before: <Job job={job} />,
+          before: <Job job={job} setJob={(e) => setJob({ ...e })} />,
           buttons: [
             {
               text: "Create job",
@@ -48,7 +52,7 @@ export default function Jobs() {
                     address as unknown as "0x",
                     job as unknown as Detasker.JobStruct,
                     {
-                      gasLimit: 1,
+                      gasLimit: GASS_FEE,
                     }
                   );
                 })();
@@ -62,8 +66,58 @@ export default function Jobs() {
       <Button onClick={() => SetShowAddJobs(true)}>Add a job</Button>
       <h2>Jos</h2>
       {jobs.map((j) => (
-        <p key={j.title}>{j.title == "" ? "no title" : j.title}</p>
+        <JobAccordion job={j} key={"job" + j.id} />
       ))}
     </div>
+  );
+}
+
+function JobAccordion(props: { job: Jobm }) {
+  const [symbol, setSymbol] = useState("");
+  const getTokenSymbol = useCallback(async (cotract: string) => {
+    let symbol = "";
+    const contract = new ethers.Contract(cotract, erc20Abi, signer);
+    if (isAddress(cotract) && cotract !== zeroAddress) {
+      symbol = await contract.symbol();
+    }
+    return symbol;
+  }, []);
+  useEffect(() => {
+    getTokenSymbol(props.job.token).then((e) => setSymbol(e));
+  }, [props.job]);
+  return (
+    <Accordion>
+      <Accordion.Header>
+        <Row className="w-100">
+          <Col md={10}>
+            <h3 key={props.job.title}>
+              {props.job.title == "" ? "no title" : props.job.title}
+            </h3>
+          </Col>
+          <Col md={2}>
+            <p>
+              {new Date(
+                props.job.datePublished.toNumber()
+              ).toLocaleDateString()}
+            </p>
+          </Col>
+        </Row>
+      </Accordion.Header>
+      <Accordion.Body>
+        <p>{props.job.description}</p>
+        <Row>
+          <Col md></Col>
+          {ethers.utils.formatEther(
+            props.job.requestedPaymentAmount.toString()
+          )}
+          {" " + symbol}
+          <Col md>
+            <Button href={"/job/view/" + props.job.id} className="w-100">
+              Vew job
+            </Button>
+          </Col>
+        </Row>
+      </Accordion.Body>
+    </Accordion>
   );
 }

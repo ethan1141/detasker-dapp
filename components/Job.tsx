@@ -3,14 +3,26 @@ import { Job as Jobm } from "../libs/models/Job";
 import Text from "./Text";
 import { setProperty } from "../libs/Helper";
 import { Col, Form, Row } from "react-bootstrap";
-import { BigNumber } from "ethers";
+import { BigNumber, ethers } from "ethers";
 
-export default function Job(props: { job: Jobm }) {
+type JobProps = {
+  job: Jobm;
+  setJob: (j: Jobm) => void;
+};
+
+export default function Job(props: JobProps) {
   const [job, setJob] = useState<Jobm>(new Jobm());
 
   useEffect(() => {
     setJob({ ...props.job });
   }, [props.job]);
+
+  useEffect(() => {
+    if (job.changed) {
+      job.changed = false;
+      props.setJob(job);
+    }
+  }, [job]);
   return (
     <div>
       <Text
@@ -27,7 +39,7 @@ export default function Job(props: { job: Jobm }) {
               ...setProperty(
                 "requestedPaymentAmount",
                 job,
-                BigNumber.from(e.target.value)
+                ethers.utils.parseEther(e.target.value)
               ),
             });
           }

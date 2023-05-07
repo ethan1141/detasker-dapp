@@ -1,5 +1,3 @@
-import "../styles/globals.css";
-
 import "@rainbow-me/rainbowkit/styles.css";
 import {
   getDefaultWallets,
@@ -31,6 +29,7 @@ import { Address } from "wagmi";
 import { useAccount, useConnect, useProvider, useContract } from "wagmi";
 import { useEffect } from "react";
 import ErrorBoundary from "../components/ErrorBoundary";
+import "../styles/globals.css";
 const API_KEY = process.env.API_KEY!;
 const PRIVATE_KEY = process.env.PRIVATE_KEY!;
 export const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS!;

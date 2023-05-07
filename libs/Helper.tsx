@@ -69,6 +69,66 @@ export function setProperty(
 
   return o;
 }
+
+export const GASS_FEE = 2100000;
+
+export const zeroAddress = "0x0000000000000000000000000000000000000000";
+
+export let erc20Abi = [
+  {
+    inputs: [],
+    name: "decimals",
+    outputs: [
+      {
+        internalType: "uint8",
+        name: "",
+        type: "uint8",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "symbol",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "name",
+    outputs: [
+      {
+        internalType: "string",
+        name: "",
+        type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "totalSupply",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+];
+
 // async function getGreenFieldBucketInfo(bucketName: string) {
 //   const rpcClient = await makeRpcClient(
 //     "https://gnfd-testnet-sp-1.bnbchain.org"
