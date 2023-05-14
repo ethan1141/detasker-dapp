@@ -10,6 +10,7 @@ import { GASS_FEE, erc20Abi, zeroAddress } from "../libs/Helper";
 import Web3 from "web3";
 import { ethers } from "ethers";
 import { isAddress } from "ethers/lib/utils.js";
+import { toast } from "react-toastify";
 
 export default function Jobs() {
   const { address, isDisconnected } = useAccount();
@@ -48,13 +49,18 @@ export default function Jobs() {
               variant: "success",
               onClick() {
                 (async () => {
-                  await detasker!.createJob(
+                  const create = await detasker!.createJob(
                     address as unknown as "0x",
                     job as unknown as Detasker.JobStruct,
                     {
                       gasLimit: GASS_FEE,
                     }
                   );
+                  create.wait(4);
+                  toast("You created a job");
+                  setJobs([...jobs, job]);
+                  setJob(new Jobm());
+                  SetShowAddJobs(false);
                 })();
               },
             },
@@ -63,8 +69,10 @@ export default function Jobs() {
         show={showAddJob}
         onHide={() => SetShowAddJobs(false)}
       />
-      <Button onClick={() => SetShowAddJobs(true)}>Add a job</Button>
-      <h2>Jos</h2>
+      <Button className="my-3" onClick={() => SetShowAddJobs(true)}>
+        Add a job
+      </Button>
+      <h2>Jobs</h2>
       {jobs.map((j) => (
         <JobAccordion job={j} key={"job" + j.id} />
       ))}

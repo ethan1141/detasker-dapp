@@ -49,11 +49,6 @@ export default function Footer() {
               </li>
               <li>
                 <a target="_blank" href="/">
-                  Subscription
-                </a>
-              </li>
-              <li>
-                <a target="_blank" href="/">
                   Support Articles
                 </a>
               </li>

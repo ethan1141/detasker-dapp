@@ -1,17 +1,41 @@
-This is a [RainbowKit](https://rainbowkit.com) + [wagmi](https://wagmi.sh) + [Next.js](https://nextjs.org/) project bootstrapped with [`create-rainbowkit`](https://github.com/rainbow-me/rainbowkit/tree/main/packages/create-rainbowkit) and react-bootstrap.
+# Detasker
 
-update ./metdata.tsx with links and seo data
-update index.tsx to point to the navigation comonpents with /pages
+Detasker is a decentralized platform built on smart contracts that allows users to post jobs and hire skilled individuals to complete them in a secure and reliable manner. Our mission is to provide a trustworthy space for community-driven services, while also promoting the use of blockchain technology. This repository contains the codebase for Detasker, including smart contracts, front-end interface, and backend services.
+[Live demo](https://detasker.xyz/) or https://detasker.xyz/
 
-just hook into the ethers obj from
+[Pitch deck](https://russellshouse.asuscomm.com/drive/d/s/tZ4yPkPcnX1LfeQEma8mLZQV7f9p3cCO/L8iMUQylojMoX4SF4_1pZ_XVkJX-KvcV-7bZgqAlccAo)
 
-```
-https://docs.ethers.org/v6/getting-started/
-```
+[Detasker Contract repo](https://github.com/ethan1141/detasker-solidity)
+[Detasker Crossbell shell to migrate when out of beta stage](https://github.com/ethan1141/crossbell-detaker-app)
+
+## Objectives
+
+- To provide a secure and reliable platform for community-driven services
+- To promote the use of blockchain technology in the service industry
+- To enable seamless transactions and fair compensation for both service providers and users
+
+## Use Case
+
+Detasker can be used by anyone who needs a service completed, or anyone who is skilled in providing a service. It is particularly useful for those who want to hire skilled individuals for one-time jobs, or for those who are looking to earn extra income by offering their services on a flexible basis.
+
+## Features
+
+- Job posting and bidding system
+- Smart contract-based payment system
+- Rating and review system for service providers
+- Escrow system for secure transactions
+
+## Functionality
+
+- Users can create accounts and post jobs they need completed
+- Service providers can browse job listings and bid on jobs
+- Users can choose the service provider they prefer based on bids and reviews
+- Payment is held in escrow until the job is completed and confirmed by the user
+- Both parties can rate and review each other to build a trustworthy community
 
 # Live Demo
 
-[Domo](https://detasker.xyz/) or https://detasker.xyz/
+[Live demo](https://detasker.xyz/) or https://detasker.xyz/
 
 ## Getting Started
 
@@ -24,19 +48,3 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-## Learn More
-
-To learn more about this stack, take a look at the following resources:
-
-- [RainbowKit Documentation](https://rainbowkit.com) - Learn how to customize your wallet connection flow.
-- [wagmi Documentation](https://wagmi.sh) - Learn how to interact with Ethereum.
-- [Next.js Documentation](https://nextjs.org/docs) - Learn how to build a Next.js application.
-
-You can check out [the RainbowKit GitHub repository](https://github.com/rainbow-me/rainbowkit) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
