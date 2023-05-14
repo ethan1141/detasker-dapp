@@ -24,15 +24,16 @@ export default function Jobs() {
   useEffect(() => {
     if (!isDisconnected && detasker) {
       (async () => {
+        let arr: Jobm[] = [];
         setUserCount((await detasker!.getUserCount()).toNumber());
         //@ts-ignore
         const c = (await detasker!.getJobCount()).toNumber();
         for (let index = 0; index < c; index++) {
           //@ts-ignore
-          jobs.push(await detasker["getJobById(uint256)"](index));
+          arr.push(await detasker["getJobById(uint256)"](index));
         }
         setJobCount(c);
-        console.log(c);
+        setJobs(arr);
       })();
     }
   }, [isDisconnected]);
@@ -92,7 +93,7 @@ function JobAccordion(props: { job: Jobm }) {
   }, []);
   useEffect(() => {
     getTokenSymbol(props.job.token).then((e) => setSymbol(e));
-  }, [props.job]);
+  }, [props.job, getTokenSymbol]);
   return (
     <Accordion>
       <Accordion.Header>

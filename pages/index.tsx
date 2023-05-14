@@ -41,8 +41,7 @@ const Home: NextPage = () => {
         );
       })();
     }
-    console.log(profile);
-  }, [isDisconnected, detasker, address]);
+  }, [isDisconnected, , address]);
 
   return (
     <main>
