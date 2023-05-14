@@ -1,5 +1,9 @@
 # Detasker
 
+\* BSC Testnet
+
+Contract: 0x748fb668Bc170661250eF69052a90fED2c3Da1B1
+
 Detasker is a decentralized platform built on smart contracts that allows users to post jobs and hire skilled individuals to complete them in a secure and reliable manner. Our mission is to provide a trustworthy space for community-driven services, while also promoting the use of blockchain technology. This repository contains the codebase for Detasker, including smart contracts, front-end interface, and backend services.
 [Live demo](https://detasker.xyz/) or https://detasker.xyz/
 
