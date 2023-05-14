@@ -5,7 +5,7 @@ Detasker is a decentralized platform built on smart contracts that allows users 
 
 [Pitch deck](https://russellshouse.asuscomm.com/drive/d/s/tZ4yPkPcnX1LfeQEma8mLZQV7f9p3cCO/L8iMUQylojMoX4SF4_1pZ_XVkJX-KvcV-7bZgqAlccAo)
 
-[Detasker Contract repo](https://github.com/ethan1141/detasker-solidity)
+[Detasker Contract](https://github.com/ethan1141/detasker-solidity)
 
 [Detasker Crossbell shell to migrate when out of beta stage](https://github.com/ethan1141/crossbell-detaker-app)
 
